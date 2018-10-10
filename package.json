@@ -1,0 +1,17 @@
+{
+  "name": "generator-lambda",
+  "version": "1.0.0",
+  "description": "Generator Lambdas in NodeJs, Go and Python runtimes",
+  "main": "index.js",
+  "files": [
+    "generators"
+  ],
+  "keywords": [
+    "yeoman-generator"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "yeoman-generator": "^3.1.1"
+  }
+}
