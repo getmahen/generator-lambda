@@ -1,7 +1,7 @@
 #### Lambda code generator using Yoeman. 
 # Supported Lambda runtimes: NodeJs, Go, Python
 
-### STEPS TO CREATE A GO Lambda Scafolding.
+### STEPS TO CREATE A Lambda Scafolding.
 - Clone this repo
 - Install Yoeman if it is not already installed on your machine. Following command installs Yoeman globally.
   `npm install -g yo`
