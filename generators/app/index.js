@@ -1,6 +1,7 @@
 'use strict';
 
 const Generator = require('yeoman-generator');
+const fs = require("fs");
 module.exports = class extends Generator {
   
   constructor(args, opts) {
@@ -35,11 +36,28 @@ module.exports = class extends Generator {
       filter: function(val) {
         return val.toLowerCase();
       }
+    },
+    {
+      type    : 'input',
+      name    : 'destinationPath',
+      message : 'Where do you want the lambda project to be created?',
+      filter: function(val) {
+        return val.toLowerCase();
+      },
+      validate: function(value) {
+        if(isValidPath(value)) {
+          return true;
+        } else {
+          return false;
+        }     
+      }
     }]);
 
     this.lambdaName = answers.name;
     this.runtime = answers.runtime;
+    this.destinationPath = answers.destinationPath;
 
+    this.log('destinationPath', answers.destinationPath);
     // this.log('app name', answers.name);
     // this.log('Destination Path: ' + this.destinationRoot());
     // this.log('Context Path: ' + this.contextRoot);
@@ -65,5 +83,16 @@ module.exports = class extends Generator {
     else {
       this.log('Unspecified lambda runtime...');
     }
+  }
+};
+
+function isValidPath(destinationPath){
+  try {
+    var stat = fs.lstatSync(destinationPath);
+    return stat.isDirectory();
+  } catch (err) {
+    console.log(err);
+    // lstatSync throws an error if path doesn't exist
+    return false;
   }
 };
